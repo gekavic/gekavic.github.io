@@ -1,118 +1,373 @@
 
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
- <meta charset="utf-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1" />
- <title>Mohamed Mahrous — Portfolio</title>
- <meta name="description" content="Resume, projects, awards, and contact for Mohamed Mahrous" />
- <link rel="preconnect" href="https://fonts.googleapis.com" />
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mohamed Mahrous — Portfolio</title>
+  <meta name="description" content="Resume, projects, awards, and contact for Mohamed Mahrous" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta property="og:title" content="Mohamed Mahrous — Portfolio" />
+  <meta property="og:description" content="Computational modeling, EIS, and ML projects." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/og.png" />
+  <link rel="icon" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Real CSS (you can extract this to /assets/style.css and link it) -->
+  <style>
+    /* CSS Reset + variables */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    :root{
+      --bg: #0b1220;          /* dark background */
+      --card: #0f172a;        /* slate-900 */
+      --muted: #94a3b8;       /* slate-400 */
+      --text: #e2e8f0;        /* slate-200 */
+      --brand: #6366f1;       /* indigo-500 */
+      --brand-2:#22d3ee;      /* cyan-400 */
+      --ring: rgba(99,102,241,.4);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    :root.light{
+      --bg:#f8fafc;          /* slate-50 */
+      --card:#ffffff;
+      --text:#0f172a;         /* slate-900 */
+      --muted:#475569;        /* slate-600 */
+      --shadow: 0 12px 24px rgba(2,6,23,.06);
+    }
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg, var(--bg) 0%, #0b1325 100%);color:var(--text);}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
+
+    /* Header */
+    header{position:sticky;top:0;backdrop-filter:saturate(150%) blur(10px);background:color-mix(in lab, var(--bg) 85%, transparent);border-bottom:1px solid color-mix(in lab, var(--text) 8%, transparent);z-index:100}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .nav a{font-weight:600;opacity:.9}
+    .nav a:hover{opacity:1}
+    .menu{display:flex;gap:22px;font-size:.95rem}
+    .brand{font-weight:800;letter-spacing:-.02em}
+
+    /* Hero */
+    .hero{padding:80px 0;background:
+      radial-gradient(600px circle at 20% -10%, color-mix(in lab,var(--brand),var(--bg) 75%) 0, transparent 60%),
+      radial-gradient(500px circle at 90% 10%, color-mix(in lab,var(--brand-2),var(--bg) 75%) 0, transparent 60%)}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+    @media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+    h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.1;margin:0}
+    .lead{margin-top:14px;color:var(--muted);font-size:1.1rem}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    .btn{padding:10px 16px;border-radius:12px;border:1px solid color-mix(in lab, var(--text) 14%, transparent);background:linear-gradient(180deg, color-mix(in lab,var(--card),transparent 15%), var(--card));box-shadow:var(--shadow);display:inline-flex;align-items:center;gap:8px}
+    .btn:hover{outline:2px solid var(--ring)}
+    .btn.primary{background:linear-gradient(180deg, var(--brand), color-mix(in lab,var(--brand),black 12%));border:none}
+
+    /* Sections */
+    section{padding:64px 0}
+    section h2{font-size:1.6rem;margin:0}
+    .section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+    .card{background:var(--card);border:1px solid color-mix(in lab,var(--text) 10%, transparent);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+
+    /* Grid cards */
+    .grid{display:grid;gap:18px}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    @media (max-width:1000px){.grid-3{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:720px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+    /* Project card */
+    .proj{display:grid;gap:10px}
+    .badge{font-size:.7rem;padding:4px 8px;border-radius:999px;background:color-mix(in lab,var(--brand) 18%, var(--card));border:1px solid color-mix(in lab,var(--brand) 50%, transparent);width:max-content}
+    .proj p{color:var(--muted);font-size:.95rem;margin:0}
+    .proj:hover{outline:2px solid var(--ring)}
+
+    /* Timeline list */
+    .list{display:grid;gap:12px}
+    .list-item{display:grid;grid-template-columns:90px 1fr;gap:14px;align-items:baseline}
+    .list-item .year{color:var(--muted);font-weight:600}
+
+    /* Resume columns */
+    .resume{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media (max-width:900px){.resume{grid-template-columns:1fr}}
+    ul{margin:8px 0 0 18px;color:var(--muted)}
+
+    /* Footer */
+    footer{border-top:1px solid color-mix(in lab, var(--text) 10%, transparent);padding:42px 0;color:var(--muted);text-align:center}
+
+    /* Utilities */
+    .muted{color:var(--muted)}
+    .hide{display:none}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .search{width:100%;padding:10px 12px;border-radius:12px;border:1px solid color-mix(in lab,var(--text) 15%,transparent);background:var(--card);color:var(--text)}
+    .right{display:flex;gap:10px;align-items:center}
+    .toggle{cursor:pointer;border-radius:999px;border:1px solid color-mix(in lab,var(--text) 15%,transparent);padding:8px 12px}
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mohamed Mahrous",
+    "url": "https://YOUR-USERNAME.github.io/",
+    "sameAs": ["https://github.com/YOUR-USERNAME","https://www.linkedin.com/in/YOUR-LINKEDIN"],
+    "jobTitle": "PhD Candidate, ECE",
+    "knowsAbout": ["Electrochemistry","EIS","Machine Learning","Molecular Dynamics","Battery Interfaces"]
+  }
+  </script>
 </head>
 <body>
- <header>
- <div>
- <a href="#">Mohamed Mahrous</a>
- <nav>
- <a href="#about">About</a>
- <a href="#resume">Resume</a>
- <a href="#projects">Projects</a>
- <a href="#awards">Awards</a>
- <a href="#contact">Contact</a>
- </nav>
- </div>
- </header>
- <section>
- <div>
- <div>
- <h1>Computational Modeling & Battery Interfaces</h1>
- <p>PhD candidate at U of T — energy systems, EIS, and ML-driven analysis. I build models & tools that turn raw data into decisions.</p>
- <div>
- <a href="#resume">View Resume</a>
- <a href="#projects">Explore Projects</a>
- <a href="https://github.com/" target="_blank">GitHub</a>
- <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
- </div>
- </div>
- <div>
- <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Profile" />
- </div>
- </div>
- </section>
- <section>
- <h2>About</h2>
- <p>I work at the intersection of electrochemistry, data, and computation. Recent focus: robust pipelines for EIS feature extraction, clustering, and physics-informed models for interfacial dynamics.</p>
- </section>
- <section>
- <div>
- <h2>Resume</h2>
- <a href="resume.pdf">Download PDF</a>
- </div>
- <div>
- <div>
- <h3>Education</h3>
- <ul>
- <li>PhD, Electrical & Computer Engineering — University of Toronto</li>
- <li>BSc & MSc, Electrical Engineering — (details)</li>
- </ul>
- </div>
- <div>
- <h3>Expertise</h3>
- <p>EIS • ECM fitting • MD/MC • PDE/State-space • Python/NumPy • ML</p>
- </div>
- </div>
- </section>
- <section>
- <h2>Projects</h2>
- <p>Selected work. Link each card to its GitHub repo.</p>
- <div>
- <a href="#">
- <div>
- <h3>EIS Auto‑Fitter</h3>
- <span>Python</span>
- </div>
- <p>Pipeline to fit Nyquist curves to Randles/extended circuits and extract R<sub>ct</sub>, C<sub>dl</sub>, Warburg.</p>
- <p>GitHub →</p>
- </a>
- <a href="#">
- <div>
- <h3>Pt(111) Ice Adsorption MD</h3>
- <span>LAMMPS</span>
- </div>
- <p>Simulation of water adsorption and ice formation on Pt(111), analysis in OVITO.</p>
- <p>GitHub →</p>
- </a>
- <a href="#">
- <div>
- <h3>Interfacial State‑Space Model</h3>
- <span>Modeling</span>
- </div>
- <p>Unified PDE/state‑space framework coupling adsorption, PNP, and charge transfer.</p>
- <p>Preprint →</p>
- </a>
- </div>
- </section>
- <section>
- <h2>Awards</h2>
- <div>
- <div>
- <div>2025</div>
- <div>Bert Wasmund Graduate Scholarship</div>
- <p>For sustainable energy research in ECE.</p>
- </div>
- <div>
- <div>2024</div>
- <div>(Award name)</div>
- <p>Brief description.</p>
- </div>
- </div>
- </section>
- <section>
- <h2>Contact</h2>
- <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
- </section>
- <footer>
- © Mohamed Mahrous — Built with GitHub Pages
- </footer>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#">Mohamed Mahrous</a>
+      <nav class="menu" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#resume">Resume</a>
+        <a href="#projects">Projects</a>
+        <a href="#awards">Awards</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="right">
+        <button id="mode" class="toggle" title="Toggle light/dark">🌗</button>
+        <a class="toggle" href="resume.pdf" title="Download resume">⬇ Resume</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>Computational Modeling & Battery Interfaces</h1>
+        <p class="lead">PhD candidate at U of T — energy systems, EIS, and ML-driven analysis. I build models & tools that turn raw data into decisions.</p>
+        <div class="cta">
+          <a href="#projects" class="btn primary">Explore Projects</a>
+          <a href="#resume" class="btn">View Resume</a>
+          <a href="https://github.com/YOUR-USERNAME" target="_blank" class="btn">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" class="btn">LinkedIn ↗</a>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="text-align:center">
+          <img alt="Profile" src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" style="width:120px;height:120px;border-radius:16px;display:block;margin:10px auto 6px;"/>
+          <div class="muted">Toronto, Canada · Available for collaboration</div>
+          <div class="row" style="justify-content:center;margin-top:8px">
+            <span class="badge">EIS</span>
+            <span class="badge">Modeling</span>
+            <span class="badge">Python</span>
+            <span class="badge">LAMMPS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2>About</h2>
+      </div>
+      <div class="card">
+        <p class="muted">I work at the intersection of electrochemistry, data, and computation. Recent focus: robust pipelines for EIS feature extraction, clustering, and physics‑informed models for interfacial dynamics.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume -->
+  <section id="resume">
+    <div class="container">
+      <div class="section-head">
+        <h2>Resume</h2>
+        <input id="search-resume" class="search" placeholder="Quick filter (e.g., Python, EIS, UofT)" />
+      </div>
+      <div class="resume" id="resume-grid">
+        <div class="card" data-tags="education uoft ece">
+          <h3>Education</h3>
+          <ul>
+            <li>PhD, Electrical & Computer Engineering — University of Toronto</li>
+            <li>BSc & MSc, Electrical Engineering — (details)</li>
+          </ul>
+        </div>
+        <div class="card" data-tags="skills python eis modeling md pde ml">
+          <h3>Expertise</h3>
+          <ul>
+            <li>EIS · ECM fitting · Nyquist/Bode · Randles</li>
+            <li>MD/MC · LAMMPS · OVITO</li>
+            <li>PDE/State‑space · PNP · Optimization</li>
+            <li>Python · NumPy · SciPy · scikit‑learn</li>
+          </ul>
+        </div>
+        <div class="card" data-tags="experience pulsenics industry">
+          <h3>Experience</h3>
+          <ul>
+            <li>Application Engineer (Intern), Pulsenics — EIS analytics & ML pipelines</li>
+            <li>Teaching/Research Assistant — Modeling & simulation</li>
+          </ul>
+        </div>
+        <div class="card" data-tags="publications preprint modeling">
+          <h3>Publications</h3>
+          <ul>
+            <li>Interfacial state‑space model (preprint)</li>
+            <li>Transient adsorption equations (manuscript)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <div class="row">
+          <input id="search" class="search" placeholder="Filter projects (e.g., Python, LAMMPS, EIS)" />
+          <button id="sort" class="toggle">Sort by: Recent</button>
+        </div>
+      </div>
+      <div class="grid grid-3" id="project-grid">
+        <!-- Project card template -->
+        <a class="card proj" data-tags="python eis fitting" data-date="2025-08-01" href="#">
+          <div class="row" style="justify-content:space-between;align-items:center">
+            <h3>EIS Auto‑Fitter</h3>
+            <span class="badge">Python</span>
+          </div>
+          <p>Pipeline to fit Nyquist curves to Randles/extended circuits and extract R<sub>ct</sub>, C<sub>dl</sub>, Warburg.</p>
+          <span class="muted">GitHub →</span>
+        </a>
+        <a class="card proj" data-tags="lammps md pt111" data-date="2025-07-10" href="#">
+          <div class="row" style="justify-content:space-between;align-items:center">
+            <h3>Pt(111) Ice Adsorption MD</h3>
+            <span class="badge">LAMMPS</span>
+          </div>
+          <p>Simulation of water adsorption and ice formation on Pt(111), analysis in OVITO.</p>
+          <span class="muted">GitHub →</span>
+        </a>
+        <a class="card proj" data-tags="modeling pde pnp" data-date="2025-06-15" href="#">
+          <div class="row" style="justify-content:space-between;align-items:center">
+            <h3>Interfacial State‑Space Model</h3>
+            <span class="badge">Modeling</span>
+          </div>
+          <p>Unified PDE/state‑space framework coupling adsorption, PNP, and charge transfer.</p>
+          <span class="muted">Preprint →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section id="awards">
+    <div class="container">
+      <h2>Awards</h2>
+      <div class="list" style="margin-top:16px">
+        <div class="card list-item"><div class="year">2025</div><div>
+          <strong>Bert Wasmund Graduate Scholarship</strong>
+          <div class="muted">For sustainable energy research in ECE.</div>
+        </div></div>
+        <div class="card list-item"><div class="year">2024</div><div>
+          <strong>(Award name)</strong>
+          <div class="muted">Brief description.</div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head"><h2>Contact</h2></div>
+      <div class="grid grid-2">
+        <div class="card">
+          <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+          <p class="muted">Open to research collaborations and EIS/ML consulting.</p>
+        </div>
+        <form id="contact-form" class="card" novalidate>
+          <div class="row" style="flex-direction:column">
+            <input name="name" placeholder="Your name" class="search" required />
+            <input type="email" name="email" placeholder="Email" class="search" required />
+            <textarea name="message" placeholder="Message" rows="4" class="search" required></textarea>
+            <button class="btn primary" type="submit">Send</button>
+            <div id="form-status" class="muted" aria-live="polite"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="y"></span> Mohamed Mahrous — Built with GitHub Pages · <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <!-- Real JS (extract to /assets/site.js if desired) -->
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Dark / Light mode toggle with localStorage
+    const root = document.documentElement;
+    const modeBtn = document.getElementById('mode');
+    const KEY = 'prefers-light';
+    const applyMode = (light) => {
+      if(light){ root.classList.add('light'); } else { root.classList.remove('light'); }
+    };
+    applyMode(localStorage.getItem(KEY)==='1');
+    modeBtn.addEventListener('click',()=>{
+      const next = !(root.classList.contains('light'));
+      applyMode(next); localStorage.setItem(KEY, next ? '1':'0');
+    });
+
+    // Simple filter + sort for projects
+    const q = document.getElementById('search');
+    const sortBtn = document.getElementById('sort');
+    const grid = document.getElementById('project-grid');
+    const cards = Array.from(grid.querySelectorAll('.proj'));
+    function render(){
+      const term = (q.value||'').toLowerCase().trim();
+      cards.forEach(c=>{
+        const tags = (c.dataset.tags||'').toLowerCase();
+        const text = c.textContent.toLowerCase();
+        const show = !term || tags.includes(term) || text.includes(term);
+        c.style.display = show ? '' : 'none';
+      });
+    }
+    q && q.addEventListener('input', render);
+
+    let recentFirst = true;
+    sortBtn && sortBtn.addEventListener('click',()=>{
+      recentFirst = !recentFirst;
+      sortBtn.textContent = 'Sort by: ' + (recentFirst ? 'Recent' : 'A–Z');
+      const sorted = [...cards].sort((a,b)=>{
+        if(recentFirst){ return (new Date(b.dataset.date)) - (new Date(a.dataset.date)); }
+        return a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent);
+      });
+      sorted.forEach(el=>grid.appendChild(el));
+    });
+
+    // Resume quick filter
+    const rInput = document.getElementById('search-resume');
+    const rCards = Array.from(document.querySelectorAll('#resume-grid .card'));
+    rInput && rInput.addEventListener('input', ()=>{
+      const term = (rInput.value||'').toLowerCase().trim();
+      rCards.forEach(c=>{
+        const tags = (c.dataset.tags||'').toLowerCase();
+        const text = c.textContent.toLowerCase();
+        c.style.display = (!term || tags.includes(term) || text.includes(term)) ? '' : 'none';
+      });
+    });
+
+    // Contact form (client-side demo)
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    form && form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      status.textContent = 'Sending… (demo)';
+      // Replace with Formspree or your backend endpoint
+      await new Promise(r=>setTimeout(r, 600));
+      status.textContent = 'Thanks! I will get back to you shortly.';
+      form.reset();
+    });
+  </script>
 </body>
 </html>
