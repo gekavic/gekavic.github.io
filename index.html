@@ -1,147 +1,118 @@
-<!doctype html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mohamed Mahrous — Portfolio</title>
-  <meta name="description" content="Resume, projects, awards, and contact for Mohamed Mahrous" />
-  <!-- Tailwind Play CDN (no build step needed) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style> body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; } </style>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <title>Mohamed Mahrous — Portfolio</title>
+ <meta name="description" content="Resume, projects, awards, and contact for Mohamed Mahrous" />
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
-<body class="bg-slate-50 text-slate-900">
-  <!-- Header -->
-  <header class="sticky top-0 z-10 backdrop-blur bg-white/70 border-b border-slate-200">
-    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#" class="font-extrabold tracking-tight text-lg">Mohamed Mahrous</a>
-      <nav class="hidden sm:flex gap-6 text-sm">
-        <a href="#about" class="hover:text-blue-600">About</a>
-        <a href="#resume" class="hover:text-blue-600">Resume</a>
-        <a href="#projects" class="hover:text-blue-600">Projects</a>
-        <a href="#awards" class="hover:text-blue-600">Awards</a>
-        <a href="#contact" class="hover:text-blue-600">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="bg-gradient-to-br from-blue-50 to-indigo-50 border-b border-slate-200">
-    <div class="max-w-5xl mx-auto px-4 py-16 grid md:grid-cols-[1.2fr,0.8fr] gap-10 items-center">
-      <div>
-        <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">Computational Modeling & Battery Interfaces</h1>
-        <p class="mt-4 text-slate-700 text-lg">PhD candidate at U of T — energy systems, EIS, and ML-driven analysis. I build models & tools that turn raw data into decisions.</p>
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#resume" class="px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700">View Resume</a>
-          <a href="#projects" class="px-4 py-2 rounded-xl border border-slate-300 hover:bg-white">Explore Projects</a>
-          <a href="https://github.com/" target="_blank" class="px-4 py-2 rounded-xl border border-slate-300 hover:bg-white">GitHub</a>
-          <a href="https://www.linkedin.com/" target="_blank" class="px-4 py-2 rounded-xl border border-slate-300 hover:bg-white">LinkedIn</a>
-        </div>
-      </div>
-      <div class="justify-self-center">
-        <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Profile" class="w-40 h-40 rounded-2xl shadow-xl object-cover" />
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="max-w-5xl mx-auto px-4 py-14">
-    <h2 class="text-2xl font-bold">About</h2>
-    <p class="mt-3 text-slate-700 leading-relaxed">I work at the intersection of electrochemistry, data, and computation. Recent focus: robust pipelines for EIS feature extraction, clustering, and physics-informed models for interfacial dynamics.</p>
-  </section>
-
-  <!-- Resume -->
-  <section id="resume" class="max-w-5xl mx-auto px-4 py-14">
-    <div class="flex items-center justify-between">
-      <h2 class="text-2xl font-bold">Resume</h2>
-      <!-- Replace resume.pdf after you upload -->
-      <a href="resume.pdf" class="text-blue-600 hover:underline">Download PDF</a>
-    </div>
-    <div class="mt-6 grid md:grid-cols-2 gap-6">
-      <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
-        <h3 class="font-semibold">Education</h3>
-        <ul class="mt-2 text-sm text-slate-700 list-disc list-inside">
-          <li>PhD, Electrical & Computer Engineering — University of Toronto</li>
-          <li>BSc & MSc, Electrical Engineering — (details)</li>
-        </ul>
-      </div>
-      <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
-        <h3 class="font-semibold">Expertise</h3>
-        <p class="mt-2 text-sm text-slate-700">EIS • ECM fitting • MD/MC • PDE/State-space • Python/NumPy • ML</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="max-w-5xl mx-auto px-4 py-14">
-    <h2 class="text-2xl font-bold">Projects</h2>
-    <p class="mt-2 text-slate-700">Selected work. Link each card to its GitHub repo.</p>
-    <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Project card template (duplicate as needed) -->
-      <a href="#" class="group block p-5 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
-        <div class="flex items-center justify-between">
-          <h3 class="font-semibold">EIS Auto‑Fitter</h3>
-          <span class="text-xs px-2 py-1 rounded-full bg-blue-50 text-blue-700">Python</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-700">Pipeline to fit Nyquist curves to Randles/extended circuits and extract R<sub>ct</sub>, C<sub>dl</sub>, Warburg.</p>
-        <p class="mt-3 text-xs text-slate-500">GitHub →</p>
-      </a>
-
-      <a href="#" class="group block p-5 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
-        <div class="flex items-center justify-between">
-          <h3 class="font-semibold">Pt(111) Ice Adsorption MD</h3>
-          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">LAMMPS</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-700">Simulation of water adsorption and ice formation on Pt(111), analysis in OVITO.</p>
-        <p class="mt-3 text-xs text-slate-500">GitHub →</p>
-      </a>
-
-      <a href="#" class="group block p-5 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
-        <div class="flex items-center justify-between">
-          <h3 class="font-semibold">Interfacial State‑Space Model</h3>
-          <span class="text-xs px-2 py-1 rounded-full bg-violet-50 text-violet-700">Modeling</span>
-        </div>
-        <p class="mt-2 text-sm text-slate-700">Unified PDE/state‑space framework coupling adsorption, PNP, and charge transfer.</p>
-        <p class="mt-3 text-xs text-slate-500">Preprint →</p>
-      </a>
-    </div>
-  </section>
-
-  <!-- Awards -->
-  <section id="awards" class="max-w-5xl mx-auto px-4 py-14">
-    <h2 class="text-2xl font-bold">Awards</h2>
-    <div class="mt-6 space-y-4">
-      <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
-        <div class="text-sm text-slate-500">2025</div>
-        <div class="font-semibold">Bert Wasmund Graduate Scholarship</div>
-        <p class="mt-1 text-sm text-slate-700">For sustainable energy research in ECE.</p>
-      </div>
-      <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
-        <div class="text-sm text-slate-500">2024</div>
-        <div class="font-semibold">(Award name)</div>
-        <p class="mt-1 text-sm text-slate-700">Brief description.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="max-w-5xl mx-auto px-4 py-14">
-    <h2 class="text-2xl font-bold">Contact</h2>
-    <p class="mt-3 text-slate-700">Email: <a href="mailto:you@example.com" class="text-blue-600 hover:underline">you@example.com</a></p>
-    <!-- Optional: Formspree action for a simple contact form without backend -->
-    <!-- <form action="https://formspree.io/f/your-id" method="POST" class="mt-4 grid gap-3 max-w-lg">
-      <input class="px-3 py-2 border border-slate-300 rounded-xl" name="name" placeholder="Your name" required />
-      <input class="px-3 py-2 border border-slate-300 rounded-xl" name="email" type="email" placeholder="Your email" required />
-      <textarea class="px-3 py-2 border border-slate-300 rounded-xl" name="message" rows="4" placeholder="Your message" required></textarea>
-      <button class="px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700">Send</button>
-    </form> -->
-  </section>
-
-  <footer class="border-t border-slate-200 py-10 text-center text-sm text-slate-500">
-    © <span id="y"></span> Mohamed Mahrous — Built with GitHub Pages
-  </footer>
-  <script> document.getElementById('y').textContent = new Date().getFullYear(); </script>
+<body>
+ <header>
+ <div>
+ <a href="#">Mohamed Mahrous</a>
+ <nav>
+ <a href="#about">About</a>
+ <a href="#resume">Resume</a>
+ <a href="#projects">Projects</a>
+ <a href="#awards">Awards</a>
+ <a href="#contact">Contact</a>
+ </nav>
+ </div>
+ </header>
+ <section>
+ <div>
+ <div>
+ <h1>Computational Modeling & Battery Interfaces</h1>
+ <p>PhD candidate at U of T — energy systems, EIS, and ML-driven analysis. I build models & tools that turn raw data into decisions.</p>
+ <div>
+ <a href="#resume">View Resume</a>
+ <a href="#projects">Explore Projects</a>
+ <a href="https://github.com/" target="_blank">GitHub</a>
+ <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+ </div>
+ </div>
+ <div>
+ <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Profile" />
+ </div>
+ </div>
+ </section>
+ <section>
+ <h2>About</h2>
+ <p>I work at the intersection of electrochemistry, data, and computation. Recent focus: robust pipelines for EIS feature extraction, clustering, and physics-informed models for interfacial dynamics.</p>
+ </section>
+ <section>
+ <div>
+ <h2>Resume</h2>
+ <a href="resume.pdf">Download PDF</a>
+ </div>
+ <div>
+ <div>
+ <h3>Education</h3>
+ <ul>
+ <li>PhD, Electrical & Computer Engineering — University of Toronto</li>
+ <li>BSc & MSc, Electrical Engineering — (details)</li>
+ </ul>
+ </div>
+ <div>
+ <h3>Expertise</h3>
+ <p>EIS • ECM fitting • MD/MC • PDE/State-space • Python/NumPy • ML</p>
+ </div>
+ </div>
+ </section>
+ <section>
+ <h2>Projects</h2>
+ <p>Selected work. Link each card to its GitHub repo.</p>
+ <div>
+ <a href="#">
+ <div>
+ <h3>EIS Auto‑Fitter</h3>
+ <span>Python</span>
+ </div>
+ <p>Pipeline to fit Nyquist curves to Randles/extended circuits and extract R<sub>ct</sub>, C<sub>dl</sub>, Warburg.</p>
+ <p>GitHub →</p>
+ </a>
+ <a href="#">
+ <div>
+ <h3>Pt(111) Ice Adsorption MD</h3>
+ <span>LAMMPS</span>
+ </div>
+ <p>Simulation of water adsorption and ice formation on Pt(111), analysis in OVITO.</p>
+ <p>GitHub →</p>
+ </a>
+ <a href="#">
+ <div>
+ <h3>Interfacial State‑Space Model</h3>
+ <span>Modeling</span>
+ </div>
+ <p>Unified PDE/state‑space framework coupling adsorption, PNP, and charge transfer.</p>
+ <p>Preprint →</p>
+ </a>
+ </div>
+ </section>
+ <section>
+ <h2>Awards</h2>
+ <div>
+ <div>
+ <div>2025</div>
+ <div>Bert Wasmund Graduate Scholarship</div>
+ <p>For sustainable energy research in ECE.</p>
+ </div>
+ <div>
+ <div>2024</div>
+ <div>(Award name)</div>
+ <p>Brief description.</p>
+ </div>
+ </div>
+ </section>
+ <section>
+ <h2>Contact</h2>
+ <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+ </section>
+ <footer>
+ © Mohamed Mahrous — Built with GitHub Pages
+ </footer>
 </body>
 </html>
